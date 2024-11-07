@@ -2,24 +2,22 @@ name: CI for Angular Project
 
 on:
   push:
-    branches: 
-    - main
+    branches: [main]
   pull_request:
-    branches: 
-    - main
+    branches: [main]
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v3  # Compatible with Node.js 20
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '18'
+        node-version: '20'  # Explicitly set Node.js to version 20
 
     - name: Cache node modules
       uses: actions/cache@v3
