@@ -12,24 +12,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Step 1: Checkout the repository
-    - name: Checkout code
-      uses: actions/checkout@v3
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    # Step 2: Set up Node.js (required for Angular)
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'  # Use the Node.js version Angular CLI supports
+      # Step 2: Set up Node.js (required for Angular)
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18" # Use the Node.js version Angular CLI supports
 
-    # Step 3: Install dependencies
-    - name: Install dependencies
-      run: npm install
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
 
-    # Step 4: Run build to check if the app compiles correctly
-    - name: Build the project
-      run: npm run build --if-present
+      # Step 4: Run build to check if the app compiles correctly
+      - name: Build the project
+        run: npm run build --if-present
 
-    # Step 5: Run tests
-    - name: Run tests
-      run: npm test --if-present
+      # Step 5: Run tests
+      - name: Run tests
+        run: npm test --if-present
