@@ -1,0 +1,45 @@
+.scoreLeftbdr {
+    border-left: 4px solid blue;
+  }
+  .textScore {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .activeStr {
+    background-color: rgb(129, 203, 222);
+    color: rgb(58, 88, 240);
+    border-radius: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+    // height: 50px;
+    // width: 20px;
+  }
+  .scoreDot {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    // color: red;
+    // background-color: red;
+  }
+  .userImg {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
+  
+  .teamDiv {
+    border: 1px solid rgb(203, 203, 238);
+    background-color: white;
+  }
+  .iconStyle {
+    background-color: rgb(181, 184, 231);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    color: white;
+   font-size: 1.3rem;
+  }
+  
