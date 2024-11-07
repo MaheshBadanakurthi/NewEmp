@@ -1,6 +1,5 @@
 name: CI for Angular Project
 
-# Trigger the workflow on push or pull request to main branch
 on:
   push:
     branches: [main]
@@ -12,24 +11,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      # Step 2: Set up Node.js (required for Angular)
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18" # Use the Node.js version Angular CLI supports
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
 
-      # Step 3: Install dependencies
-      - name: Install dependencies
-        run: npm install
+    - name: Cache node modules
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
 
-      # Step 4: Run build to check if the app compiles correctly
-      - name: Build the project
-        run: npm run build --if-present
+    - name: Install dependencies
+      run: npm install
 
-      # Step 5: Run tests
-      - name: Run tests
-        run: npm test --if-present
+    - name: Install Angular CLI
+      run: npm install -g @angular/cli
+
+    - name: Build the project
+      run: ng build --configuration development
+
+    - name: Run tests
+      run: npm test -- --watch=false
